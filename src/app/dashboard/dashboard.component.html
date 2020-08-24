@@ -1,0 +1,32 @@
+<div class="main-container">
+    <div class="patients-container">
+        <mat-card *ngFor="let patient of patients">
+            <mat-card-header>
+                <mat-card-title>{{patient.name}}</mat-card-title>
+                <mat-card-subtitle>{{patient.email}}</mat-card-subtitle>
+            </mat-card-header>
+            <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                    <mat-panel-title>Vaccines</mat-panel-title>
+                  </mat-expansion-panel-header>
+                  <mat-list color="primary">
+                    <mat-list-item *ngFor="let vacName of objectKeys(patient.vaccines)">
+                        <div class="list-item-container">
+                            <mat-icon class="good" *ngIf="patient.vaccines[vacName].injected" (click)="handleToggle(patient,vacName,false)">mood</mat-icon>
+                            <mat-icon class="bad" *ngIf="!patient.vaccines[vacName].injected" (click)="handleToggle(patient,vacName,true)">mood_bad</mat-icon>
+                            <span>{{vacName | titlecase}}</span>
+                            <span *ngIf="!patient.vaccines[vacName].injected">Due Date:<br>{{dueDate(patient,vacName)}}</span>
+                            <span *ngIf="patient.vaccines[vacName].injected && patient.vaccines[vacName].injDate">Inj Date:<br>{{patient.vaccines[vacName].injDate}}</span>
+                            <div *ngIf="patient.vaccines[vacName].injected">
+                                <input matInput [matDatepicker]="picker" style="width:1px;visibility:hidden;" (dateChange)="dateSet($event,patient,vacName)">
+                                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                                <mat-datepicker touchUi #picker></mat-datepicker>
+                            </div>
+                        </div>
+                    </mat-list-item>
+                  </mat-list>
+            </mat-expansion-panel>
+        </mat-card>
+    </div>
+    <button mat-flat-button color="primary" (click)="signOut()">Sign Out <mat-icon>exit_to_app</mat-icon></button>
+</div>

@@ -1,0 +1,95 @@
+@import url('https://fonts.googleapis.com/css?family=Pacifico&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
+
+.main-container{
+    background-color: #ffecb3;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+    .section-bg{
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        z-index: 1;
+        content: "";
+        display: inline-block;
+        clip-path: circle(220% at 30vw 140vh);
+        //background-color: #ff8f0040;
+        width: 100vw;
+        height: 100vh;
+    }
+    .section-bg::before{
+        position: absolute;
+        top: 0;
+        right: 0;
+        z-index: 1;
+        content: "";
+        display: inline-block;
+        clip-path: circle(150% at 30% -100%);
+        background-color: #FFC107;
+        width: 100vw;
+        height: 40vh;
+        animation: pulse 1s ease infinite;
+    }
+    .section-bg::after{
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        z-index: 0;
+        content: "";
+        display: inline-block;
+        clip-path: circle(150% at 70% 200%);
+        background-color: #ffa000;
+        width: 100vw;
+        height: 40vh;
+        animation: pulse 1s ease infinite;
+    }
+    .section-one{
+        z-index: 5;
+        div{
+            width: 100vw;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            h1{
+                margin-top: 1em;
+                font-size: 3em;
+                font-family: 'Pacifico', cursive;
+                font-weight: bold;
+            }
+            h6{
+                font-size: 1em;
+                font-family: 'Montserrat', sans-serif;
+            }
+        }
+    }
+}
+
+button[mat-button]{
+    position: absolute;
+    z-index: 10;
+    bottom: 5vh;
+    left: 5vh;
+}
+button[mat-button]:first-of-type{
+    bottom: 5vh;
+    left: unset;
+    right: 5vh;
+}
+
+.heart {
+    fill: #f50057;
+    width: 30px;
+    animation: pulse 1s ease infinite;
+  }
+  
+  @keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.3); }
+    100% { transform: scale(1); }
+  }

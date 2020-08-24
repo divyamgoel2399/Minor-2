@@ -1,0 +1,60 @@
+<div class="register-container">
+    <form class="register-form" [formGroup]="regForm">
+        <h1>Please Register</h1>
+        <label>Select registration type:</label>
+        <mat-radio-group name="regtype" formControlName="type">
+            <mat-radio-button [value]="'patient'" selected="true">Patient</mat-radio-button>
+            <mat-radio-button [value]="'hospital'">Hospital</mat-radio-button>
+        </mat-radio-group>
+        <mat-form-field appearance="outline" color="primary">
+          <mat-label>Email</mat-label>
+          <input matInput placeholder="Ex. pat@example.com" formControlName="email">
+          <mat-error *ngIf="fEmail.errors?.email && !fEmail.errors?.required">
+            Please enter a valid email address
+          </mat-error>
+          <mat-error *ngIf="fEmail.errors?.required">
+            Email is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="outline" color="primary">
+            <mat-label>{{regForm.value.type=="patient"?'':'Hospital '}}Name</mat-label>
+            <input matInput formControlName="name">
+            <mat-error *ngIf="fName.errors?.required">
+                Name is <strong>required</strong>
+            </mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="outline" color="primary" *ngIf="regForm.value.type=='patient'">
+            <mat-label>Registered Hospital</mat-label>
+            <mat-select formControlName="hospital">
+              <mat-option *ngFor="let hospital of hospitals" [value]="hospital">
+                {{hospital}}
+              </mat-option>
+            </mat-select>
+            <mat-error *ngIf="fHospital.errors?.required">
+                Field is <strong>required</strong>
+            </mat-error>
+          </mat-form-field>
+        <mat-form-field appearance="outline" color="primary" *ngIf="regForm.value.type=='patient'">
+            <mat-label>Date of Birth</mat-label>
+            <input matInput type="date" formControlName="dob">
+            <mat-error *ngIf="fDob.errors?.required">
+                D.O.B. is <strong>required</strong>
+            </mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="outline" color="primary">
+            <mat-label>Password</mat-label>
+            <input matInput [type]="hide ? 'password' : 'text'" formControlName="password">
+            <mat-error *ngIf="fPassword.errors?.required">
+                Password is <strong>required</strong>
+            </mat-error>
+            <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
+        </mat-form-field>
+        <button mat-flat-button color="primary" (click)="handleRegister()">Register</button>
+      </form>
+</div>
+<div class="success-container" [ngStyle]="{'clip-path': registered ? 'circle(200% at 0vw 0vh)':'circle(0% at 0vw 0vh)'}">
+  <h1>Registration Successfull</h1>
+  <button mat-button routerLink="/login">Login<mat-icon>navigate_next</mat-icon></button>
+</div>

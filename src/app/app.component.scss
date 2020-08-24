@@ -1,0 +1,14 @@
+@import url('https://fonts.googleapis.com/css?family=Pacifico&display=swap');
+
+header{
+    background-color: #FFC107;
+    padding: 1em;
+    font-family: 'Pacifico', cursive;
+    font-size: large;
+    font-weight: bold;
+    color: black;
+    box-shadow: 0px 1px 10px 5px rgba(0,0,0,.2);
+    position: fixed;
+    z-index: 999;
+    width: 100vw;
+}

@@ -1,0 +1,21 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
+
+.login-container{
+    height: 100%;
+    width: 100%;
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    background-color: #FFF8E1;
+    h1{
+        text-align: center;
+        font-family: 'Montserrat', sans-serif;
+        font-size: 1.3em;
+        font-weight: bold;
+    }
+    form{
+        display: grid;
+        grid-template-rows: 1fr;
+        gap: .2em;
+    }
+}

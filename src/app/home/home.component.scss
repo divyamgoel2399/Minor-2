@@ -1,0 +1,18 @@
+.main-container{
+    margin: auto;
+    padding-top: 6em;
+    width: 80vw;
+    display: flex;
+    flex-direction: column;
+    .vac-container{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+    button{
+        position: absolute;
+        align-self: center;
+        bottom: 5vh;
+    }
+}

@@ -1,0 +1,13 @@
+<div class="main-container" *ngIf="patient">
+    <h2>Report</h2>
+    <div>Name : {{patient.name}}</div>
+    <div>Email : {{patient.email}}</div>
+    <div>D.O.B. : {{patient.dob}}</div>
+    <br>
+    <h1>Vaccinations</h1>
+    <div class="vac-container" *ngFor="let vacName of objectKeys(patient.vaccines)">
+        <div>{{vacName | uppercase}}</div>
+        <div>{{patient.vaccines[vacName].injected ? 'Inj Date - ' + patient.vaccines[vacName].injDate : 'Due Date - ' + dueDate(patient,vacName)}}</div>
+    </div>
+    <button mat-flat-button color="primary" (click)="signOut()">Sign Out <mat-icon>exit_to_app</mat-icon></button>
+</div>

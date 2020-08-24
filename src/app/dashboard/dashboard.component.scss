@@ -1,0 +1,52 @@
+.main-container{
+    padding-top: 6em;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    .patients-container{
+        display: grid;
+        grid-template-columns: 1fr;
+        width: 90vw;
+        gap: 1em;
+        mat-expansion-panel{
+            box-shadow: none;
+        }
+        mat-list-item{
+            .list-item-container{
+                display:grid;
+                grid-template-columns: .5fr 1fr 1fr .5fr;
+                align-items: center;
+                justify-items: center;
+                width: 100%;
+                mat-icon{
+                    padding-right: 10px;
+                    &.good{
+                        color: green;
+                    }
+                    &.bad{
+                        color: red;
+                    }
+                }
+                span:nth-of-type(2){
+                    font-size: .7em;
+                    
+                }
+                mat-form-field{
+                    width: 7em;
+                    input{
+                        display: none;
+                    }
+                }
+            }
+            
+        }
+    }
+    button{
+        position: absolute;
+        margin: 0 auto;
+        bottom: 5vh;
+    }
+}
+
